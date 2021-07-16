@@ -1,9 +1,10 @@
 import React from 'react';
-import style from "./App.module.scss"
+import style from './App.module.scss';
 
 const App = () => {
+  const mth = 'Hello World';
   return (
-    <h3 className={style.smth}>Hello World</h3>
+    <h3 className={style.smth}>{mth}</h3>
   );
 };
 
