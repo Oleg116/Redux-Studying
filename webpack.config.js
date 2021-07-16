@@ -12,6 +12,7 @@ module.exports = {
       react: path.join(__dirname, 'node_modules', 'react'),
     },
   },
+
   module: {
     rules: [
       {
@@ -22,7 +23,7 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: [
           {
             loader: 'style-loader',
@@ -30,9 +31,15 @@ module.exports = {
           {
             loader: 'css-loader',
           },
+          {
+            loader: "sass-loader"
+          }
         ],
       },
     ],
+  },
+  devServer: {
+    port: 3000,
   },
   plugins: [
     new HtmlWebPackPlugin({
