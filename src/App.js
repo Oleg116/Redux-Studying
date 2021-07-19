@@ -1,9 +1,10 @@
 import React from 'react';
+import style from "./App.module.scss"
 
-const HelloWorld = () => {
+const App = () => {
   return (
-    <h3>Hello World</h3>
+    <h3 className={style.smth}>Hello World</h3>
   );
 };
 
-export default HelloWorld;
+export default App;
