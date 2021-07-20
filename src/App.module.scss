@@ -1,4 +1,46 @@
-.smth {
-  color: aquamarine;
-  background-color: red;
+$customGreen: #2cc56c;
+$greenShadow: 1px 1px 20px $customGreen;
+$customRed: #d14a41;
+$redShadow: 1px 1px 20px $customRed;
+
+body {
+  background-color: #2b3c4d;
+}
+
+.btn_increase, .btn_decrease {
+  background-color: rgba(0, 0, 0, 0);
+  height: 100px;
+  width: 250px;
+}
+
+.btn_increase {
+  color: $customGreen;
+  border: $customGreen 2px solid;
+  font-size: 25px;
+  &:hover{
+    transition: 1s;
+    box-shadow: $greenShadow;
+    text-shadow: $greenShadow;
+  }
+}
+
+.btn_decrease {
+  color: $customRed;
+  border: $customRed 2px solid;
+  font-size: 25px;
+  &:hover{
+    transition: 1s;
+    box-shadow: $redShadow;
+    text-shadow: $redShadow;
+  }
+}
+
+.result {
+  position: absolute;
+  left: 210px;
+  top: 110px;
+  font-size: 30px;
+  color: #f78b01;
+  border: #f78b01 2px solid;
+  padding: 30px;
 }
