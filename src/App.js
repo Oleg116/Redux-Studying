@@ -1,20 +1,41 @@
-import React, { useState } from 'react';
+/* eslint-disable no-shadow */
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import style from './App.module.scss';
-import store from './store/index';
+import { increment, decrement } from './store/counterData/actions';
 
-const App = () => {
-  const [count, setCount] = useState(store.getState().reducer.counter);
-  const changeState = (typeData) => {
-    setCount(count + 1);
-    store.dispatch({ type: typeData });
-  };
-  return (
-    <div>
-      <button className={style.btn_increase} type="button" onClick={() => changeState('INCREASE_COUNTER')}>Increase</button>
-      <button className={style.btn_decrease} type="button" onClick={() => changeState('DECREASE_COUNTER')}>Decrease</button>
-      <h3 className={style.result}>{store.getState().reducer.counter}</h3>
-    </div>
-  );
-};
+// eslint-disable-next-line react/prop-types
+const App = ({ counter, increment, decrement }) => (
+  <div>
+    <button
+      className={style.btn_increase}
+      type="button"
+      onClick={() => increment(counter)}
+    >
+      Increase
+    </button>
+    <button
+      className={style.btn_decrease}
+      type="button"
+      onClick={() => decrement(counter)}
+    >
+      Decrease
+    </button>
+    <h3 className={style.result}>{counter}</h3>
+  </div>
+);
 
-export default App;
+const mapStateToProps = (state) => ({
+  counter: state.rootReducer.counter,
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators(
+  {
+    increment,
+    decrement,
+  },
+  dispatch,
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
