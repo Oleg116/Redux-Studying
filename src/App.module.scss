@@ -40,9 +40,9 @@ body {
 }
 
 .result {
-  position: absolute;
-  min-width: 45px;
-  height: 60px;
+  display: inline-block;
+  width: 45px;
+  height: 70px;
   left: 230px;
   top: 110px;
   font-size: 30px;

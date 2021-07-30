@@ -1,0 +1,74 @@
+.input {
+  height: 20px;
+  font-size: 17px;
+  border-radius: 10px;
+  background-color: #2b3c4d;
+  color: #f78b01;
+  border: none;
+  border-bottom: 5px solid #f78b01;
+}
+
+.submit, .reset {
+  width: 70px;
+  height: 30px;
+  margin: 5px;
+  font-size: 16px;
+  color: #2b3c4d;
+  border: none;
+  border-radius: 10px;
+  &.submit {
+    background-color: #2cc56c;
+    &:hover{
+      transition: 0.2s;
+      box-shadow: 0px 0px 5px 2px #2cc56c;
+    }
+  }
+  &.reset {
+    background-color: #d14a41;
+    &:hover{
+      transition: 0.2s;
+      box-shadow: 0px 0px 5px 2px #d14a41;
+    }
+  }
+}
+
+::placeholder {
+  color: #f78b01;
+  opacity: 0.6;
+}
+
+ul {
+  list-style: none;
+}
+
+.resultBox {
+  display: inline-block;
+  flex-direction: row;
+  // text-align: right;
+  width: auto;
+  margin: 5px;
+
+}
+
+span {
+  margin:  7px;
+  position: relative;
+  color: #f78b01;
+  // font-weight: bold;
+  font-size: 19px;
+  letter-spacing: 1px;
+}
+
+.deleteSpec {
+  display: inline-block;
+  width: 70px;
+  font-size: 14px;
+  margin-left: 50px;
+  border-radius: 5px;
+  background-color: #d14a41;
+  border: none;
+  &:hover{
+    transition: 0.2s;
+    box-shadow: 0px 0px 5px 2px #d14a41;
+  }
+}

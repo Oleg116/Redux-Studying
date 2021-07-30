@@ -2,38 +2,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import style from './App.module.scss';
-import { increment, decrement } from './store/counterData/actions';
+import {
+  increment, decrement, addToDo, removeToDo, resetTodo,
+} from './store/counterData/actions';
+import Counter from './Counter';
+import ToDo from './ToDo';
 
-// eslint-disable-next-line react/prop-types
-const App = ({ counter, increment, decrement }) => (
+const App = ({
+  // eslint-disable-next-line react/prop-types
+  counter, toDoList, increment, decrement, addToDo, removeToDo, resetTodo,
+}) => (
   <div>
-    <button
-      className={style.btn_increase}
-      type="button"
-      onClick={() => increment(counter)}
-    >
-      Increase
-    </button>
-    <button
-      className={style.btn_decrease}
-      type="button"
-      onClick={() => decrement(counter)}
-    >
-      Decrease
-    </button>
-    <h3 className={style.result}>{counter}</h3>
+    <Counter counter={counter} increment={increment} decrement={decrement} />
+    <ToDo toDoList={toDoList} addToDo={addToDo} removeToDo={removeToDo} resetTodo={resetTodo} />
   </div>
 );
 
 const mapStateToProps = (state) => ({
   counter: state.rootReducer.counter,
+  toDoList: state.rootReducer.toDo,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(
   {
     increment,
     decrement,
+    addToDo,
+    removeToDo,
+    resetTodo,
   },
   dispatch,
 );
