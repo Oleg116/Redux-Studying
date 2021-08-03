@@ -1,5 +1,4 @@
 const initialState = {
-  counter: 0,
   toDo: [],
 };
 
@@ -28,7 +27,23 @@ function rootReducer(state = initialState, action) {
     case 'RESET_LIST':
       return {
         ...state,
-        toDo: [],
+        toDo: action.payload,
+      };
+    case 'READY_TOGLE':
+      return {
+        ...state,
+        toDo: state.toDo.map(item => {
+          if (item.name === action.payload) {
+            return {
+              name: item.name,
+              isDone: !item.isDone,
+            };
+          }
+          return {
+            name: item.name,
+            isDone: item.isDone,
+          };
+        }),
       };
     default: {
       return state;

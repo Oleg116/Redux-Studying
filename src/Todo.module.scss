@@ -50,25 +50,40 @@ ul {
 
 }
 
-span {
+span, .false {
   margin:  7px;
   position: relative;
   color: #f78b01;
-  // font-weight: bold;
   font-size: 19px;
   letter-spacing: 1px;
+  transition: 0.5s;
 }
 
-.deleteSpec {
+.deleteSpec, .readySpec {
   display: inline-block;
   width: 70px;
   font-size: 14px;
   margin-left: 50px;
   border-radius: 5px;
-  background-color: #d14a41;
   border: none;
+}
+
+.deleteSpec { 
+  background-color: #d14a41;
   &:hover{
     transition: 0.2s;
     box-shadow: 0px 0px 5px 2px #d14a41;
   }
+}
+.readySpec {
+  background-color: #2cc56c;
+  &:hover{
+    transition: 0.2s;
+    box-shadow: 0px 0px 5px 2px #2cc56c;
+  }
+}
+
+.true {
+  color: #2cc56c;
+  text-decoration: line-through;
 }

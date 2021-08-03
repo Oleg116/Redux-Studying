@@ -12,7 +12,7 @@ export const increment = (counter) => ({
 
 export const addToDo = (toDo) => ({
   type: actionType.ADD_TODO,
-  payload: { name: toDo },
+  payload: { name: toDo, isDone: false },
 });
 
 export const removeToDo = (toDo) => ({
@@ -23,4 +23,9 @@ export const removeToDo = (toDo) => ({
 export const resetTodo = () => ({
   type: actionType.RESET_TODO,
   payload: [],
+});
+
+export const makeDone = (toDo) => ({
+  type: actionType.READY_TOGLE,
+  payload: toDo,
 });
