@@ -4,16 +4,6 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case 'INCREASE_COUNTER':
-      return {
-        ...state,
-        counter: action.payload,
-      };
-    case 'DECREASE_COUNTER':
-      return {
-        ...state,
-        counter: action.payload,
-      };
     case 'ADD_TODO':
       return {
         ...state,
@@ -23,27 +13,45 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         toDo: state.toDo.filter(item => item.name !== action.payload),
+
       };
-    case 'RESET_LIST':
+    case 'CLEAR_COMPLETED':
       return {
         ...state,
-        toDo: action.payload,
+        toDo: state.toDo.filter(item => !item.isDone),
       };
     case 'READY_TOGLE':
       return {
         ...state,
-        toDo: state.toDo.map(item => {
-          if (item.name === action.payload) {
+        toDo: state.toDo.map(element => {
+          if (element.name === action.payload) {
             return {
-              name: item.name,
-              isDone: !item.isDone,
+              name: element.name,
+              isDone: !element.isDone,
             };
           }
           return {
-            name: item.name,
-            isDone: item.isDone,
+            name: element.name,
+            isDone: element.isDone,
           };
         }),
+
+      };
+    case 'SET_ALL_COMPLETED':
+      return {
+        ...state,
+        toDo: state.toDo.map(item => ({
+          name: item.name,
+          isDone: true,
+        })),
+      };
+    case 'SET_ALL_UNCOMPLETED':
+      return {
+        ...state,
+        toDo: state.toDo.map(item => ({
+          name: item.name,
+          isDone: false,
+        })),
       };
     default: {
       return state;

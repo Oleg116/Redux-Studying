@@ -20,12 +20,19 @@ export const removeToDo = (toDo) => ({
   payload: toDo,
 });
 
-export const resetTodo = () => ({
-  type: actionType.RESET_TODO,
-  payload: [],
+export const clearCompleted = () => ({
+  type: actionType.CLEAR_COMPLETED,
 });
 
 export const makeDone = (toDo) => ({
   type: actionType.READY_TOGLE,
   payload: toDo,
+});
+
+export const setAllCompleted = () => ({
+  type: actionType.SET_ALL_COMPLETED,
+});
+
+export const setAllUncompleted = () => ({
+  type: actionType.SET_ALL_UNCOMPLETED,
 });

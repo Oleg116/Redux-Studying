@@ -3,14 +3,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  increment, decrement, addToDo, removeToDo, resetTodo, makeDone,
+  increment, decrement, addToDo, removeToDo, clearCompleted, makeDone, setAllCompleted, setAllUncompleted,
 } from './store/counterData/actions';
-import Counter from './Counter';
 import ToDo from './ToDo';
 
 const App = ({
   // eslint-disable-next-line react/prop-types
-  counter, toDoList, increment, decrement, addToDo, removeToDo, resetTodo, makeDone,
+  toDoList, addToDo, removeToDo, clearCompleted, makeDone, setAllCompleted, setAllUncompleted,
 }) => (
   <div>
     {/* <Counter counter={counter} increment={increment} decrement={decrement} /> */}
@@ -18,8 +17,10 @@ const App = ({
       toDoList={toDoList}
       addToDo={addToDo}
       removeToDo={removeToDo}
-      resetTodo={resetTodo}
+      clearCompleted={clearCompleted}
       makeDone={makeDone}
+      setAllCompleted={setAllCompleted}
+      setAllUncompleted={setAllUncompleted}
     />
   </div>
 );
@@ -35,8 +36,10 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
     decrement,
     addToDo,
     removeToDo,
-    resetTodo,
+    clearCompleted,
     makeDone,
+    setAllCompleted,
+    setAllUncompleted,
   },
   dispatch,
 );

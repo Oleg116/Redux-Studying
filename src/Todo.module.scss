@@ -1,89 +1,122 @@
-.input {
-  height: 20px;
-  font-size: 17px;
-  border-radius: 10px;
-  background-color: #2b3c4d;
-  color: #f78b01;
-  border: none;
-  border-bottom: 5px solid #f78b01;
+$base-color: #fcfcfc;
+* {
+  background-color: $base-color;
+font-size: 15px;
+}
+.jumbotron{
+  font-size: 100px;
+  text-align: center;
+  margin: 0px;
+  color: #ead3d5;
+}
+.inputField {
+  border: 1px solid black;
+  display: flex;
+  box-shadow: 0px 15px 24px 5px rgba(34, 60, 80, 0.28);
 }
 
-.submit, .reset {
-  width: 70px;
-  height: 30px;
-  margin: 5px;
-  font-size: 16px;
-  color: #2b3c4d;
-  border: none;
-  border-radius: 10px;
-  &.submit {
-    background-color: #2cc56c;
-    &:hover{
-      transition: 0.2s;
-      box-shadow: 0px 0px 5px 2px #2cc56c;
-    }
-  }
-  &.reset {
-    background-color: #d14a41;
-    &:hover{
-      transition: 0.2s;
-      box-shadow: 0px 0px 5px 2px #d14a41;
-    }
-  }
+.toDoList {
+  box-shadow: 0px 15px 24px 5px rgba(34, 60, 80, 0.28);
 }
 
-::placeholder {
-  color: #f78b01;
-  opacity: 0.6;
+.todoApp {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+}
+
+.input, button {
+  height: 40px;
+  border: none;
+  background-color: $base-color;
+  outline: none;
 }
 
 ul {
   list-style: none;
+  margin: 0px;
+  padding: 0px;
 }
 
-.resultBox {
-  display: inline-block;
-  flex-direction: row;
-  // text-align: right;
-  width: auto;
-  margin: 5px;
-
+li {
+  border: 0px;
+  border-bottom: 1px solid black;
+  margin: 0px;
 }
 
-span, .false {
-  margin:  7px;
+.input {
+  width: calc(100% - 40px);
+}
+
+
+.setAll {
+  width: 40px;
+  padding: 0px;
+}
+
+input[type="checkbox"]{
+  width: 10px;
+  height: 10px;
+}
+
+input[type="checkbox"]:before {
   position: relative;
-  color: #f78b01;
-  font-size: 19px;
-  letter-spacing: 1px;
-  transition: 0.5s;
+  display: block;
+  border-radius: 20px;
+  width: 20px;
+  left: -3px;
+  height: 20px;
+  top: -5px;
+  border: 1px solid black;
+  content: "";
+  background: $base-color;
 }
 
-.deleteSpec, .readySpec {
-  display: inline-block;
-  width: 70px;
-  font-size: 14px;
-  margin-left: 50px;
-  border-radius: 5px;
-  border: none;
+input[type="checkbox"]:after {
+  position: relative;
+  display: block;
+  border-radius: 200px;
+  left: 2px;
+  top: -21px;
+  width: 7px;
+  height: 7px;
+  border-width: 1px;
+  border-color: $base-color;
+  content: "";
+  background-repeat: no-repeat;
+  background-position: center;
+}
+input[type="checkbox"]:checked::after {
+  z-index: 1;
+  background-color: red;
+  border-radius: 200px
+}
+input[type="checkbox"]:checked::before {
+  background-color: red;
+  border-radius: 200px;
+  z-index: 2;
 }
 
-.deleteSpec { 
-  background-color: #d14a41;
-  &:hover{
-    transition: 0.2s;
-    box-shadow: 0px 0px 5px 2px #d14a41;
-  }
-}
-.readySpec {
-  background-color: #2cc56c;
-  &:hover{
-    transition: 0.2s;
-    box-shadow: 0px 0px 5px 2px #2cc56c;
-  }
+span {
+  position: relative;
+  left: 10px;
+  font-size: 20px;
 }
 
-.true {
-  color: #2cc56c;
-  text-decoration: line-through;
+// .todoItem {
+//   width: 20px;
+// }
+
+.deleteSpec {
+  padding: 0px;
+  margin: 0px;
+  color: red;
+  position: relative;
+  right: -420px;
+  font-size: 30px;
+  z-index: 1000;
+}
+
+.left {
+  margin-right: 10px;
 }

@@ -1,12 +1,14 @@
 import React from 'react';
 import style from './Todo.module.scss';
-// import './toggleStyle.css';
 
 const ToDo = ({
-  toDoList, addToDo, removeToDo, resetTodo, makeDone,
+  toDoList, addToDo, removeToDo, clearCompleted, makeDone, setAllCompleted, setAllUncompleted
 }) => {
+  const left = toDoList.filter(item => !item.isDone).length;
+  const list = document.getElementsByClassName('toDoList')[0]
+
   const addInputValue = e => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && e.target.value !== '') {
       addToDo(e.target.value);
       e.target.value = '';
     }
@@ -16,33 +18,50 @@ const ToDo = ({
 
     removeToDo(shouldRemove);
   };
-  const toDoArr = [];
+  let toDoArr = [];
   for (let i = 0; i < toDoList.length; i++) {
     toDoArr.push(toDoList[i].name);
   }
+  const completeToggle = () => {
+    for (let i = 0; i < toDoList.length; i++) {
+      if (!toDoList[i].isDone) {
 
+        setAllCompleted()
+        break
+      } else {
+        setAllUncompleted()
+      }
+    }
+  }
   return (
-    <div>
-      <input className={style.input} type="text" onKeyPress={e => addInputValue(e)} placeholder="Write to do..." />
-      <button className={style.reset} type="button" onClick={() => resetTodo()}>Reset</button>
-      <ul>
-        {toDoArr.map((element, index) => (
-          <li key={index.toString()}>
-            <div className={style.resultBox}>
-              <input checked={toDoList[index].isDone} type="checkbox" onChange={(e) => makeDone(e.target.value)} value={element} />
-              <span
-                className={index}
-              >
-                {element}
-              </span>
-              <button className={style.deleteSpec} type="button" onClick={() => removeToDoItem(index)}>Remove</button>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <span><input className="active" type="radio" name="status" />Active</span>
-      <span><input className='completed' type='radio' name='status' />Completed</span>
-      <span><input className='all' type='radio' name='status' />All</span>
+    <div className={style.todoApp}>
+      <p className={style.jumbotron}>todos</p>
+      <div className={style.inputField}>
+        <button className={style.setAll} type="button" onClick={() => completeToggle()}>></button>
+        <input className={style.input} type="text" onKeyPress={addInputValue} placeholder="Write to do..." />
+      </div>
+      <div className='toDoList' className={style.toDoList}>
+        <ul>
+          {toDoArr.map((element, index) => (
+            <li key={index.toString()}>
+              <div className={style.todoItem}>
+                <input className={style.resultBox} checked={toDoList[index].isDone} type="checkbox" onChange={(e) => makeDone(e.target.value)} value={element} />
+                <span
+                  className={index}
+                >
+                  {element}
+                </span>
+                <button className={style.deleteSpec} type="button" onClick={() => removeToDoItem(index)}>X</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <span className={style.left}>{left} Items left</span>
+        <button>All</button>
+        <button> Active</button>
+        <button>Completed</button>
+        <button type="button" onClick={clearCompleted}>Clear completed</button>
+      </div>
     </div>
   );
 };
