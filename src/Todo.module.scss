@@ -1,8 +1,10 @@
 $base-color: #fcfcfc;
+
 * {
   background-color: $base-color;
 font-size: 15px;
 }
+
 .jumbotron{
   font-size: 100px;
   text-align: center;
@@ -38,23 +40,25 @@ ul {
   padding: 0px;
 }
 
-li {
-  border: 0px;
-  border-bottom: 1px solid black;
-  margin: 0px;
-}
-
 .input {
   width: calc(100% - 40px);
+  font-style: oblique;
+  font-size: 20px;
+  &::placeholder{
+    color: rgba(0,0,0, 0.5);
+  }
 }
-
 
 .setAll {
   width: 40px;
   padding: 0px;
+  transform: rotate(90deg);
+  font-size: 18px;
+  padding-left: 7px;
 }
 
-input[type="checkbox"]{
+input[type="checkbox"] {
+  margin: 0px 10px 0px 7px;
   width: 10px;
   height: 10px;
 }
@@ -64,13 +68,14 @@ input[type="checkbox"]:before {
   display: block;
   border-radius: 20px;
   width: 20px;
-  left: -3px;
+  left: -5px;
   height: 20px;
-  top: -5px;
+  top: -8px;
   border: 1px solid black;
   content: "";
   background: $base-color;
 }
+
 
 input[type="checkbox"]:after {
   position: relative;
@@ -86,11 +91,13 @@ input[type="checkbox"]:after {
   background-repeat: no-repeat;
   background-position: center;
 }
+
 input[type="checkbox"]:checked::after {
   z-index: 1;
   background-color: red;
   border-radius: 200px
 }
+
 input[type="checkbox"]:checked::before {
   background-color: red;
   border-radius: 200px;
@@ -98,25 +105,43 @@ input[type="checkbox"]:checked::before {
 }
 
 span {
+  display: inline-block;
   position: relative;
   left: 10px;
   font-size: 20px;
+  padding-left: 5px;
+  width: 441px;
 }
 
-// .todoItem {
-//   width: 20px;
-// }
+.todoItem {
+  border-bottom: 1px solid black;
+  margin: 0px;
+  padding: 5px 0px 5px 5px;
+}
 
 .deleteSpec {
+  height: 20px;
+  display: inline-block;
   padding: 0px;
   margin: 0px;
   color: red;
   position: relative;
-  right: -420px;
-  font-size: 30px;
-  z-index: 1000;
+  right: 0px;
+  background-color: rgba(184,49,49, 0);
+  font-size: 25px;
+  padding: 0px;
 }
 
 .left {
-  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+  left: 10px;
+  font-size: 20px;
+  padding-left: 5px;
+  width: 241px;
+  margin: 10px 10px 0px 0px;
+}
+
+.buttonsContainer {
+  display: flex;
 }

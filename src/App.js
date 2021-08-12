@@ -3,16 +3,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  increment, decrement, addToDo, removeToDo, clearCompleted, makeDone, setAllCompleted, setAllUncompleted,
+  addToDo, removeToDo, clearCompleted,
+  makeDone, setAllCompleted, setAllUncompleted, showCompleted,
+  showActive, showAll
 } from './store/counterData/actions';
 import ToDo from './ToDo';
 
 const App = ({
   // eslint-disable-next-line react/prop-types
-  toDoList, addToDo, removeToDo, clearCompleted, makeDone, setAllCompleted, setAllUncompleted,
+  toDoList, addToDo, removeToDo, clearCompleted, makeDone,
+  setAllCompleted, setAllUncompleted, showCompleted, showActive, showAll,
 }) => (
   <div>
-    {/* <Counter counter={counter} increment={increment} decrement={decrement} /> */}
     <ToDo
       toDoList={toDoList}
       addToDo={addToDo}
@@ -21,25 +23,28 @@ const App = ({
       makeDone={makeDone}
       setAllCompleted={setAllCompleted}
       setAllUncompleted={setAllUncompleted}
+      showCompleted={showCompleted}
+      showActive={showActive}
+      showAll={showAll}
     />
   </div>
 );
 
 const mapStateToProps = (state) => ({
-  counter: state.rootReducer.counter,
   toDoList: state.rootReducer.toDo,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(
   {
-    increment,
-    decrement,
     addToDo,
     removeToDo,
     clearCompleted,
     makeDone,
     setAllCompleted,
     setAllUncompleted,
+    showCompleted,
+    showActive,
+    showAll,
   },
   dispatch,
 );

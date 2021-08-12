@@ -6,3 +6,6 @@ export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
 export const READY_TOGLE = 'READY_TOGLE';
 export const SET_ALL_COMPLETED = 'SET_ALL_COMPLETED';
 export const SET_ALL_UNCOMPLETED = 'SET_ALL_UNCOMPLETED';
+export const SHOW_COMPLETED = 'SHOW_COMPLETED';
+export const SHOW_ACTIVE = 'SHOW_ACTIVE';
+export const SHOW_ALL = 'SHOW_ALL';

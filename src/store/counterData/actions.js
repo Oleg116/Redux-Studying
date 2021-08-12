@@ -36,3 +36,15 @@ export const setAllCompleted = () => ({
 export const setAllUncompleted = () => ({
   type: actionType.SET_ALL_UNCOMPLETED,
 });
+
+export const showCompleted = () => ({
+  type: actionType.SHOW_COMPLETED,
+});
+
+export const showActive = () => ({
+  type: actionType.SHOW_ACTIVE,
+});
+
+export const showAll = () => ({
+  type: actionType.SHOW_ALL,
+});
