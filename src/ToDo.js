@@ -35,9 +35,7 @@ const ToDo = ({
       }
     }
   };
-  const test = param => {
-    console.log(param)
-  }
+
   return (
     <div className={style.todoApp}>
       <p className={style.jumbotron}>todos</p>
