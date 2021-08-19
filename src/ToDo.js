@@ -63,7 +63,7 @@ const ToDo = ({
             Items left
           </p>
           <button id="all" type="button" onClick={() => filter(event, showAll)}>All</button>
-          <button id="active" type="button" onClick={() => filter(event, showActive)}> Active</button>
+          <button id="active" type="button" onClick={() => filter(event, showActive)} value="toggled"> Active</button>
           <button id="completed" type="button" onClick={() => filter(event, showCompleted)}>Completed</button>
           <button type="button" onClick={clearCompleted}>Clear completed</button>
         </div>

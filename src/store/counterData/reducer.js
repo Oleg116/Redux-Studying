@@ -9,19 +9,19 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         toDo: [...state.toDo, action.payload],
-        // toDoBoofer: state.toDo,
+        toDoBoofer: [...state.toDo, action.payload],
       };
     case 'REMOVE_TODO':
       return {
         ...state,
-        toDo: state.toDo.filter((item, index) => index !== action.payload),
-        // toDoBoofer: state.toDo,
+        toDo: state.toDo.filter((_, index) => index !== action.payload),
+        toDoBoofer: state.toDo.filter((_, index) => index !== action.payload),
       };
     case 'CLEAR_COMPLETED':
       return {
         ...state,
         toDo: state.toDo.filter(item => !item.isDone),
-        // toDoBoofer: state.toDo,
+        toDoBoofer: state.toDo.filter(item => !item.isDone),
       };
     case 'READY_TOGLE':
       return {
@@ -38,7 +38,18 @@ function rootReducer(state = initialState, action) {
             isDone: element.isDone,
           };
         }),
-        // toDoBoofer: state.toDo,
+        toDoBoofer: state.toDo.map((element, index) => {
+          if (index === action.payload) {
+            return {
+              name: element.name,
+              isDone: !element.isDone,
+            };
+          }
+          return {
+            name: element.name,
+            isDone: element.isDone,
+          };
+        }),
       };
     case 'SET_ALL_COMPLETED':
       return {
@@ -47,7 +58,10 @@ function rootReducer(state = initialState, action) {
           name: item.name,
           isDone: true,
         })),
-        // toDoBoofer: state.toDo,
+        toDoBoofer: state.toDo.map(item => ({
+          name: item.name,
+          isDone: true,
+        })),
       };
     case 'SET_ALL_UNCOMPLETED':
       return {
@@ -56,25 +70,26 @@ function rootReducer(state = initialState, action) {
           name: item.name,
           isDone: false,
         })),
-        // toDoBoofer: state.toDo,
+        toDoBoofer: state.toDo.map(item => ({
+          name: item.name,
+          isDone: false,
+        })),
       };
-    // case 'SHOW_COMPLETED':
-    //   return {
-    //     ...state,
-    //     toDoBoofer: state.toDo,
-    //     toDo: state.toDo.filter(item => item.isDone),
-    //   };
-    // case 'SHOW_ACTIVE':
-    //   return {
-    //     ...state,
-    //     toDoBoofer: state.toDo,
-    //     toDo: state.toDoBoofer,
-    //   };
+    case 'SHOW_COMPLETED':
+      return {
+        ...state,
+        toDo: state.toDoBoofer.filter(item => item.isDone),
+      };
+    case 'SHOW_ACTIVE':
+      return {
+        ...state,
+        toDoBoofer: state.toDo,
+        toDo: state.toDoBoofer.filter(item => !item.isDone),
+      };
     case 'SHOW_ALL':
       return {
         ...state,
-        toDoBoofer: state.todo,
-        toDo: state.toDo,
+        toDo: state.toDoBoofer,
       };
     default: {
       return state;
