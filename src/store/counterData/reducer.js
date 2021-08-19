@@ -83,7 +83,6 @@ function rootReducer(state = initialState, action) {
     case 'SHOW_ACTIVE':
       return {
         ...state,
-        toDoBoofer: state.toDo,
         toDo: state.toDoBoofer.filter(item => !item.isDone),
       };
     case 'SHOW_ALL':
