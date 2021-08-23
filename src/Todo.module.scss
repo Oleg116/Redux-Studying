@@ -1,8 +1,12 @@
 $base-color: #fcfcfc;
 
 * {
-  background-color: $base-color;
 font-size: 15px;
+}
+
+body {
+  // background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path d='M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z' fill='$fg-color'/></svg>");
+  // background-image: url(/images/image.svg);
 }
 
 .jumbotron{
@@ -18,6 +22,7 @@ font-size: 15px;
 }
 
 .toDoList {
+  background-color: $base-color;
   box-shadow: 0px 15px 24px 5px rgba(34, 60, 80, 0.28);
 }
 
@@ -77,31 +82,30 @@ input[type="checkbox"]:before {
 }
 
 
-input[type="checkbox"]:after {
-  position: relative;
-  display: block;
-  border-radius: 200px;
-  left: 2px;
-  top: -21px;
-  width: 7px;
-  height: 7px;
-  border-width: 1px;
-  border-color: $base-color;
-  content: "";
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-input[type="checkbox"]:checked::after {
-  z-index: 1;
-  background-color: red;
-  border-radius: 200px
-}
+// input[type="checkbox"]:after {
+//   position: relative;
+//   display: block;
+//   border-radius: 200px;
+//   left: 2px;
+//   top: -21px;
+//   width: 7px;
+//   height: 7px;
+//   border-width: 1px;
+//   border-color: $base-color;
+//   content: "";
+//   background-repeat: no-repeat;
+//   background-position: center;
+// }
 
 input[type="checkbox"]:checked::before {
-  background-color: red;
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path d='M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z' fill='$fg-color'/></svg>");
   border-radius: 200px;
   z-index: 2;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  transform: rotate(270deg);
+  background-size: 70%;
+  border: #79da19 1px solid;
 }
 
 span {

@@ -38,13 +38,16 @@ export const setAllUncompleted = () => ({
 });
 
 export const showCompleted = () => ({
-  type: actionType.SHOW_COMPLETED,
+  type: actionType.FILTER_LIST,
+  payload: item => item.isDone,
 });
 
 export const showActive = () => ({
-  type: actionType.SHOW_ACTIVE,
+  type: actionType.FILTER_LIST,
+  payload: item => !item.isDone,
 });
 
 export const showAll = () => ({
-  type: actionType.SHOW_ALL,
+  type: actionType.FILTER_LIST,
+  payload: item => true,
 });

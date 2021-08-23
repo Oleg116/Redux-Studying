@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import {
   addToDo, removeToDo, clearCompleted,
   makeDone, setAllCompleted, setAllUncompleted, showCompleted,
-  showActive, showAll
+  showActive, showAll,
 } from './store/counterData/actions';
 import ToDo from './ToDo';
 
@@ -31,7 +31,7 @@ const App = ({
 );
 
 const mapStateToProps = (state) => ({
-  toDoList: state.rootReducer.toDo,
+  toDoList: state.rootReducer.filtered,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(

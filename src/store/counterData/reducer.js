@@ -1,6 +1,7 @@
 const initialState = {
   toDo: [],
-  toDoBoofer: [],
+  filtered: [],
+  filterMode: item => !item.isDone,
 };
 
 function rootReducer(state = initialState, action) {
@@ -9,19 +10,19 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         toDo: [...state.toDo, action.payload],
-        toDoBoofer: [...state.toDo, action.payload],
+        filtered: [...state.toDo, action.payload].filter(state.filterMode),
       };
     case 'REMOVE_TODO':
       return {
         ...state,
         toDo: state.toDo.filter((_, index) => index !== action.payload),
-        toDoBoofer: state.toDo.filter((_, index) => index !== action.payload),
+        filtered: state.toDo.filter((_, index) => index !== action.payload).filter(state.filterMode),
       };
     case 'CLEAR_COMPLETED':
       return {
         ...state,
         toDo: state.toDo.filter(item => !item.isDone),
-        toDoBoofer: state.toDo.filter(item => !item.isDone),
+        filtered: state.filtered.filter(item => !item.isDone),
       };
     case 'READY_TOGLE':
       return {
@@ -38,7 +39,7 @@ function rootReducer(state = initialState, action) {
             isDone: element.isDone,
           };
         }),
-        toDoBoofer: state.toDo.map((element, index) => {
+        filtered: state.toDo.map((element, index) => {
           if (index === action.payload) {
             return {
               name: element.name,
@@ -58,7 +59,7 @@ function rootReducer(state = initialState, action) {
           name: item.name,
           isDone: true,
         })),
-        toDoBoofer: state.toDo.map(item => ({
+        filtered: state.toDo.map(item => ({
           name: item.name,
           isDone: true,
         })),
@@ -70,26 +71,26 @@ function rootReducer(state = initialState, action) {
           name: item.name,
           isDone: false,
         })),
-        toDoBoofer: state.toDo.map(item => ({
+        filtered: state.toDo.map(item => ({
           name: item.name,
           isDone: false,
         })),
       };
-    case 'SHOW_COMPLETED':
+    case 'FILTER_LIST':
       return {
         ...state,
-        toDo: state.toDoBoofer.filter(item => item.isDone),
+        filtered: state.toDo.filter(action.payload),
       };
-    case 'SHOW_ACTIVE':
-      return {
-        ...state,
-        toDo: state.toDoBoofer.filter(item => !item.isDone),
-      };
-    case 'SHOW_ALL':
-      return {
-        ...state,
-        toDo: state.toDoBoofer,
-      };
+    // case 'SHOW_ACTIVE':
+    //   return {
+    //     ...state,
+    //     filtered: state.toDo.filter(action.payload),
+    //   };
+    // case 'SHOW_ALL':
+    //   return {
+    //     ...state,
+    //     filtered: state.toDo.filter(action.payload),
+    //   };
     default: {
       return state;
     }
