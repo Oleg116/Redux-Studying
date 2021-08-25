@@ -1,12 +1,8 @@
 $base-color: #fcfcfc;
+$shadow: 0px 15px 24px 5px rgba(34, 60, 80, 0.28);
 
 * {
 font-size: 15px;
-}
-
-body {
-  // background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path d='M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z' fill='$fg-color'/></svg>");
-  // background-image: url(/images/image.svg);
 }
 
 .jumbotron{
@@ -18,12 +14,12 @@ body {
 .inputField {
   border: 1px solid black;
   display: flex;
-  box-shadow: 0px 15px 24px 5px rgba(34, 60, 80, 0.28);
+  box-shadow: $shadow;
 }
 
 .toDoList {
   background-color: $base-color;
-  box-shadow: 0px 15px 24px 5px rgba(34, 60, 80, 0.28);
+  box-shadow: $shadow;
 }
 
 .todoApp {
@@ -81,22 +77,6 @@ input[type="checkbox"]:before {
   background: $base-color;
 }
 
-
-// input[type="checkbox"]:after {
-//   position: relative;
-//   display: block;
-//   border-radius: 200px;
-//   left: 2px;
-//   top: -21px;
-//   width: 7px;
-//   height: 7px;
-//   border-width: 1px;
-//   border-color: $base-color;
-//   content: "";
-//   background-repeat: no-repeat;
-//   background-position: center;
-// }
-
 input[type="checkbox"]:checked::before {
   background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path d='M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z' fill='$fg-color'/></svg>");
   border-radius: 200px;
@@ -108,6 +88,9 @@ input[type="checkbox"]:checked::before {
   border: #79da19 1px solid;
 }
 
+.buttonBox {
+  display: flex;
+}
 span {
   display: inline-block;
   position: relative;
@@ -118,7 +101,7 @@ span {
 }
 
 .todoItem {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000;
   margin: 0px;
   padding: 5px 0px 5px 5px;
 }
@@ -128,7 +111,7 @@ span {
   display: inline-block;
   padding: 0px;
   margin: 0px;
-  color: red;
+  color: #ff0000;
   position: relative;
   right: 0px;
   background-color: rgba(184,49,49, 0);

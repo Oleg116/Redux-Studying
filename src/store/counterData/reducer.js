@@ -1,7 +1,8 @@
 const initialState = {
   toDo: [],
   filtered: [],
-  filterMode: item => !item.isDone,
+  filterPosition: 'All',
+  filterMode: item => true,
 };
 
 function rootReducer(state = initialState, action) {
@@ -16,7 +17,8 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         toDo: state.toDo.filter((_, index) => index !== action.payload),
-        filtered: state.toDo.filter((_, index) => index !== action.payload).filter(state.filterMode),
+        filtered: state.toDo.filter((_, index) => index !== action.payload)
+          .filter(state.filterMode),
       };
     case 'CLEAR_COMPLETED':
       return {
@@ -50,7 +52,7 @@ function rootReducer(state = initialState, action) {
             name: element.name,
             isDone: element.isDone,
           };
-        }),
+        }).filter(state.filterMode),
       };
     case 'SET_ALL_COMPLETED':
       return {
@@ -62,7 +64,7 @@ function rootReducer(state = initialState, action) {
         filtered: state.toDo.map(item => ({
           name: item.name,
           isDone: true,
-        })),
+        })).filter(state.filterMode),
       };
     case 'SET_ALL_UNCOMPLETED':
       return {
@@ -74,23 +76,15 @@ function rootReducer(state = initialState, action) {
         filtered: state.toDo.map(item => ({
           name: item.name,
           isDone: false,
-        })),
+        })).filter(state.filterMode),
       };
     case 'FILTER_LIST':
       return {
         ...state,
+        filterPosition: action.filterPosition,
+        filterMode: action.payload,
         filtered: state.toDo.filter(action.payload),
       };
-    // case 'SHOW_ACTIVE':
-    //   return {
-    //     ...state,
-    //     filtered: state.toDo.filter(action.payload),
-    //   };
-    // case 'SHOW_ALL':
-    //   return {
-    //     ...state,
-    //     filtered: state.toDo.filter(action.payload),
-    //   };
     default: {
       return state;
     }

@@ -11,12 +11,13 @@ import ToDo from './ToDo';
 
 const App = ({
   // eslint-disable-next-line react/prop-types
-  toDoList, addToDo, removeToDo, clearCompleted, makeDone,
+  toDoList, filterState, addToDo, removeToDo, clearCompleted, makeDone,
   setAllCompleted, setAllUncompleted, showCompleted, showActive, showAll,
 }) => (
   <div>
     <ToDo
       toDoList={toDoList}
+      filterState={filterState}
       addToDo={addToDo}
       removeToDo={removeToDo}
       clearCompleted={clearCompleted}
@@ -32,6 +33,7 @@ const App = ({
 
 const mapStateToProps = (state) => ({
   toDoList: state.rootReducer.filtered,
+  filterState: state.rootReducer.filterPosition,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(

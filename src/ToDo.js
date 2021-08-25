@@ -1,9 +1,10 @@
 import React from 'react';
+import Buttons from './Buttons';
 import List from './List';
 import style from './Todo.module.scss';
 
 const ToDo = ({
-  toDoList, addToDo, removeToDo, clearCompleted, makeDone,
+  toDoList, filterState, addToDo, removeToDo, clearCompleted, makeDone,
   setAllCompleted, setAllUncompleted, showCompleted, showActive, showAll,
 }) => {
   const uncompletedItemsCount = toDoList.filter(item => !item.isDone).length;
@@ -14,25 +15,15 @@ const ToDo = ({
     }
   };
 
-  const filter = (event, reduxFunction) => {
-    for (let i = 1; i <= 3; i++) {
-      event.target.parentNode.children[i].disabled = false;
-    }
-    event.target.disabled = true;
-    reduxFunction();
-  };
-
   const completeToggle = () => {
-    for (let i = 0; i < toDoList.length; i++) {
-      if (!toDoList[i].isDone) {
-        setAllCompleted();
-        break;
-      } else {
-        setAllUncompleted();
-      }
+    if (toDoList.every(item => item.isDone)) {
+      setAllUncompleted();
+    } else {
+      setAllCompleted();
     }
   };
-
+  const defaultFilterStates = ['All', 'Active', 'Completed'];
+  const defaultFilterMethods = [showAll, showActive, showCompleted, clearCompleted];
   return (
     <div className={style.todoApp}>
       <p className={style.jumbotron}>todos</p>
@@ -47,10 +38,11 @@ const ToDo = ({
             {uncompletedItemsCount}
             Items left
           </p>
-          <button id="all" type="button" onClick={event => filter(event, showAll)}>All</button>
-          <button id="active" type="button" onClick={event => filter(event, showActive)} value="toggled"> Active</button>
-          <button id="completed" type="button" onClick={event => filter(event, showCompleted)}>Completed</button>
-          <button type="button" onClick={clearCompleted}>Clear completed</button>
+          <Buttons
+            state={filterState}
+            defaultFilterStates={defaultFilterStates}
+            methods={defaultFilterMethods}
+          />
         </div>
       </div>
     </div>
