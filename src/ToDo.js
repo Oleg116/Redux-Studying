@@ -1,5 +1,6 @@
 import React from 'react';
-import Buttons from './Buttons';
+import Footer from './Footer';
+import InputField from './InputField';
 import List from './List';
 import style from './Todo.module.scss';
 
@@ -27,23 +28,15 @@ const ToDo = ({
   return (
     <div className={style.todoApp}>
       <p className={style.jumbotron}>todos</p>
-      <div className={style.inputField}>
-        <button className={style.setAll} type="button" onClick={completeToggle}>{'>'}</button>
-        <input className={style.input} type="text" onKeyPress={addInputValue} placeholder="What needs to be done?" />
-      </div>
+      <InputField completeToggle={completeToggle} addInputValue={addInputValue} />
       <div className={style.toDoList}>
         <List ToDoArray={toDoList} removeToDo={removeToDo} makeDone={makeDone} />
-        <div className={style.buttonsContainer}>
-          <p className={style.left}>
-            {uncompletedItemsCount}
-            Items left
-          </p>
-          <Buttons
-            state={filterState}
-            defaultFilterStates={defaultFilterStates}
-            methods={defaultFilterMethods}
-          />
-        </div>
+        <Footer
+          state={filterState}
+          defaultFilterStates={defaultFilterStates}
+          methods={defaultFilterMethods}
+          uncompletedItemsCount={uncompletedItemsCount}
+        />
       </div>
     </div>
   );

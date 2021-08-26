@@ -1,10 +1,14 @@
 import React from 'react';
 import style from './Todo.module.scss';
 
-export default function Buttons(buttonsParameters) {
-  const { state, defaultFilterStates, methods } = buttonsParameters;
+export default function Footer(buttonsParameters) {
+  const { state, defaultFilterStates, methods, uncompletedItemsCount } = buttonsParameters;
   return (
-    <div className={style.buttonBox}>
+    <div className={style.buttonsContainer}>
+      <p className={style.left}>
+        {uncompletedItemsCount}
+        Items left
+      </p>
       {defaultFilterStates.map((buttonName, index) => (
         <button
           disabled={state === buttonName}

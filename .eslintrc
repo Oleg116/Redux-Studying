@@ -24,8 +24,12 @@
     "rules": {
         "react/jsx-no-one-expression-per-line": "off",
         "react/prop-types": "off",
+        "react/no-array-index-key": "off",
         "arrow-parens": "off",
         "no-plusplus": "off",
+        "object-shorthand": "off",
+        "no-param-reassign": "off",
+        "no-unused-vars": "warn",
         "react/jsx-filename-extension": [
             1,
             {
