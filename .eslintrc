@@ -26,6 +26,7 @@
         "react/prop-types": "off",
         "react/no-array-index-key": "off",
         "arrow-parens": "off",
+        "no-shadow": "off",
         "no-plusplus": "off",
         "object-shorthand": "off",
         "no-param-reassign": "off",

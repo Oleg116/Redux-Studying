@@ -5,14 +5,11 @@ import style from './Todo.module.scss';
 export default function Footer({
   state, defaultFilterStates, setActiveFilter, uncompletedItemsCount, clearCompleted,
 }) {
-  const qwerty = 'test';
-  const test = classNames({ test1: true });
-  console.log(test);
   return (
     <div className={style.buttonsContainer}>
       <p className={style.left}>
         {uncompletedItemsCount}
-        Items left
+        &nbsp;Items left
       </p>
       <div className={style.filterBox}>
         {defaultFilterStates.map((buttonName, index) => (

@@ -1,18 +1,15 @@
-/* eslint-disable no-shadow */
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
   addToDo, removeToDo, clearCompleted,
-  makeDone, setAllCompleted, setAllUncompleted, showCompleted,
-  showActive, showAll, setActiveFilter,
+  makeDone, setAllCompleted, setAllUncompleted, setActiveFilter,
 } from './store/counterData/actions';
 import ToDo from './ToDo';
 
 const App = ({
-  // eslint-disable-next-line react/prop-types
   filteredList, filterState, addToDo, removeToDo, clearCompleted, makeDone,
-  setAllCompleted, setAllUncompleted, showCompleted, showActive, showAll, setActiveFilter,
+  setAllCompleted, setAllUncompleted, setActiveFilter,
 }) => (
   <div>
     <ToDo
@@ -25,9 +22,6 @@ const App = ({
       makeDone={makeDone}
       setAllCompleted={setAllCompleted}
       setAllUncompleted={setAllUncompleted}
-      showCompleted={showCompleted}
-      showActive={showActive}
-      showAll={showAll}
     />
   </div>
 );
@@ -46,9 +40,6 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
     makeDone,
     setAllCompleted,
     setAllUncompleted,
-    showCompleted,
-    showActive,
-    showAll,
   },
   dispatch,
 );

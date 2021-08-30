@@ -6,7 +6,7 @@ import style from './Todo.module.scss';
 
 const ToDo = ({
   filteredList, filterState, addToDo, removeToDo, clearCompleted, makeDone,
-  setAllCompleted, setAllUncompleted, showCompleted, showActive, showAll, setActiveFilter,
+  setAllCompleted, setAllUncompleted, setActiveFilter,
 }) => {
   const uncompletedItemsCount = filteredList.filter(item => !item.isDone).length;
   const addInputValue = event => {
