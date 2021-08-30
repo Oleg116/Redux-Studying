@@ -1,8 +1,7 @@
 const initialState = {
   toDo: [],
   filtered: [],
-  filterPosition: 'All',
-  filterMode: item => true,
+  activeFilter: 'All',
 };
 
 function rootReducer(state = initialState, action) {
@@ -11,14 +10,13 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         toDo: [...state.toDo, action.payload],
-        filtered: [...state.toDo, action.payload].filter(state.filterMode),
+        filtered: [...state.filtered, action.payload],
       };
     case 'REMOVE_TODO':
       return {
         ...state,
         toDo: state.toDo.filter((_, index) => index !== action.payload),
-        filtered: state.toDo.filter((_, index) => index !== action.payload)
-          .filter(state.filterMode),
+        filtered: state.toDo.filter((_, index) => index !== action.payload),
       };
     case 'CLEAR_COMPLETED':
       return {
@@ -52,7 +50,7 @@ function rootReducer(state = initialState, action) {
             name: element.name,
             isDone: element.isDone,
           };
-        }).filter(state.filterMode),
+        }),
       };
     case 'SET_ALL_COMPLETED':
       return {
@@ -64,7 +62,8 @@ function rootReducer(state = initialState, action) {
         filtered: state.toDo.map(item => ({
           name: item.name,
           isDone: true,
-        })).filter(state.filterMode),
+        })),
+        activeFilter: 'All',
       };
     case 'SET_ALL_UNCOMPLETED':
       return {
@@ -76,14 +75,28 @@ function rootReducer(state = initialState, action) {
         filtered: state.toDo.map(item => ({
           name: item.name,
           isDone: false,
-        })).filter(state.filterMode),
+        })),
+        activeFilter: 'All',
       };
-    case 'FILTER_LIST':
+
+    case 'SET_ACTIVE_FILTER':
+      if (action.payload === 'All') {
+        return {
+          ...state,
+          filtered: state.toDo,
+          activeFilter: action.payload,
+        };
+      } if (action.payload === 'Active') {
+        return {
+          ...state,
+          filtered: state.toDo.filter(item => !item.isDone),
+          activeFilter: action.payload,
+        };
+      }
       return {
         ...state,
-        filterPosition: action.filterPosition,
-        filterMode: action.payload,
-        filtered: state.toDo.filter(action.payload),
+        activeFilter: action.payload,
+        filtered: state.toDo.filter(item => item.isDone),
       };
     default: {
       return state;

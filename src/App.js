@@ -5,18 +5,19 @@ import { bindActionCreators } from 'redux';
 import {
   addToDo, removeToDo, clearCompleted,
   makeDone, setAllCompleted, setAllUncompleted, showCompleted,
-  showActive, showAll,
+  showActive, showAll, setActiveFilter,
 } from './store/counterData/actions';
 import ToDo from './ToDo';
 
 const App = ({
   // eslint-disable-next-line react/prop-types
-  toDoList, filterState, addToDo, removeToDo, clearCompleted, makeDone,
-  setAllCompleted, setAllUncompleted, showCompleted, showActive, showAll,
+  filteredList, filterState, addToDo, removeToDo, clearCompleted, makeDone,
+  setAllCompleted, setAllUncompleted, showCompleted, showActive, showAll, setActiveFilter,
 }) => (
   <div>
     <ToDo
-      toDoList={toDoList}
+      filteredList={filteredList}
+      setActiveFilter={setActiveFilter}
       filterState={filterState}
       addToDo={addToDo}
       removeToDo={removeToDo}
@@ -32,12 +33,13 @@ const App = ({
 );
 
 const mapStateToProps = (state) => ({
-  toDoList: state.rootReducer.filtered,
-  filterState: state.rootReducer.filterPosition,
+  filteredList: state.rootReducer.filtered,
+  filterState: state.rootReducer.activeFilter,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(
   {
+    setActiveFilter,
     addToDo,
     removeToDo,
     clearCompleted,

@@ -5,10 +5,10 @@ import List from './List';
 import style from './Todo.module.scss';
 
 const ToDo = ({
-  toDoList, filterState, addToDo, removeToDo, clearCompleted, makeDone,
-  setAllCompleted, setAllUncompleted, showCompleted, showActive, showAll,
+  filteredList, filterState, addToDo, removeToDo, clearCompleted, makeDone,
+  setAllCompleted, setAllUncompleted, showCompleted, showActive, showAll, setActiveFilter,
 }) => {
-  const uncompletedItemsCount = toDoList.filter(item => !item.isDone).length;
+  const uncompletedItemsCount = filteredList.filter(item => !item.isDone).length;
   const addInputValue = event => {
     if (event.key === 'Enter' && event.target.value !== '') {
       addToDo(event.target.value);
@@ -17,24 +17,28 @@ const ToDo = ({
   };
 
   const completeToggle = () => {
-    if (toDoList.every(item => item.isDone)) {
+    if (filteredList.every(item => item.isDone)) {
       setAllUncompleted();
     } else {
       setAllCompleted();
     }
   };
   const defaultFilterStates = ['All', 'Active', 'Completed'];
-  const defaultFilterMethods = [showAll, showActive, showCompleted, clearCompleted];
   return (
     <div className={style.todoApp}>
       <p className={style.jumbotron}>todos</p>
-      <InputField completeToggle={completeToggle} addInputValue={addInputValue} />
+      <InputField
+        completeToggle={completeToggle}
+        addInputValue={addInputValue}
+        setActiveFilter={setActiveFilter}
+      />
       <div className={style.toDoList}>
-        <List ToDoArray={toDoList} removeToDo={removeToDo} makeDone={makeDone} />
+        <List ToDoArray={filteredList} removeToDo={removeToDo} makeDone={makeDone} />
         <Footer
           state={filterState}
+          clearCompleted={clearCompleted}
           defaultFilterStates={defaultFilterStates}
-          methods={defaultFilterMethods}
+          setActiveFilter={setActiveFilter}
           uncompletedItemsCount={uncompletedItemsCount}
         />
       </div>

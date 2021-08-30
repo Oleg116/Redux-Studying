@@ -7,5 +7,4 @@ export const READY_TOGLE = 'READY_TOGLE';
 export const SET_ALL_COMPLETED = 'SET_ALL_COMPLETED';
 export const SET_ALL_UNCOMPLETED = 'SET_ALL_UNCOMPLETED';
 export const FILTER_LIST = 'FILTER_LIST';
-// export const SHOW_ACTIVE = 'SHOW_ACTIVE';
-// export const SHOW_ALL = 'SHOW_ALL';
+export const SET_ACTIVE_FILTER = 'SET_ACTIVE_FILTER';

@@ -37,20 +37,7 @@ export const setAllUncompleted = () => ({
   type: actionType.SET_ALL_UNCOMPLETED,
 });
 
-export const showCompleted = (filterPosition) => ({
-  type: actionType.FILTER_LIST,
-  filterPosition: filterPosition,
-  payload: item => item.isDone,
-});
-
-export const showActive = (filterPosition) => ({
-  type: actionType.FILTER_LIST,
-  filterPosition: filterPosition,
-  payload: item => !item.isDone,
-});
-
-export const showAll = (filterPosition) => ({
-  type: actionType.FILTER_LIST,
-  filterPosition: filterPosition,
-  payload: item => true,
+export const setActiveFilter = activeFilter => ({
+  type: actionType.SET_ACTIVE_FILTER,
+  payload: activeFilter,
 });
