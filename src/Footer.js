@@ -26,6 +26,6 @@ export default function Footer({
         ))}
       </div>
       <button type="button" className={style.clearButton} onClick={clearCompleted}>Clear completed</button>
-    </div >
+    </div>
   );
 }
