@@ -1,6 +1,8 @@
 import React from 'react';
-import classNames from 'classnames';
+import cnBind from 'classnames/bind';
 import style from './Todo.module.scss';
+
+const cx = cnBind.bind(style);
 
 export default function Footer({
   state, defaultFilterStates, setActiveFilter, uncompletedItemsCount, clearCompleted,
@@ -9,18 +11,13 @@ export default function Footer({
     <div className={style.buttonsContainer}>
       <p className={style.left}>
         {uncompletedItemsCount}
-        &nbsp;Items left
+        &nbsp; Items left
       </p>
       <div className={style.filterBox}>
         {defaultFilterStates.map((buttonName, index) => (
           <button
             key={index}
-            className={
-              classNames(
-                { LdBB3QbOueTN13y56rSK: state === buttonName },
-                { Orn5lCjulRFYlTc8NfCz: state !== buttonName },
-              )
-            }
+            className={cx({ active: state === buttonName, defaultButton: true })}
             type="button"
             onClick={() => setActiveFilter(buttonName)}
           >
@@ -29,6 +26,6 @@ export default function Footer({
         ))}
       </div>
       <button type="button" className={style.clearButton} onClick={clearCompleted}>Clear completed</button>
-    </div>
+    </div >
   );
 }
