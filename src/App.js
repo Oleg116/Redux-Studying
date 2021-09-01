@@ -27,7 +27,7 @@ const App = ({
 );
 
 const mapStateToProps = (state) => ({
-  filteredList: state.rootReducer.filtered,
+  filteredList: state.rootReducer.filteredList,
   filterState: state.rootReducer.activeFilter,
 });
 

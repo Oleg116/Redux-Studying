@@ -10,9 +10,9 @@ export const increment = (counter) => ({
   payload: counter + 1,
 });
 
-export const addToDo = (toDo) => ({
+export const addToDo = (toDo, ID) => ({
   type: actionType.ADD_TODO,
-  payload: { name: toDo, isDone: false },
+  payload: { name: toDo, isDone: false, ID: ID },
 });
 
 export const removeToDo = (toDo) => ({
@@ -37,7 +37,7 @@ export const setAllUncompleted = () => ({
   type: actionType.SET_ALL_UNCOMPLETED,
 });
 
-export const setActiveFilter = activeFilter => ({
+export const setActiveFilter = (activeFilter = 'All') => ({
   type: actionType.SET_ACTIVE_FILTER,
   payload: activeFilter,
 });

@@ -9,12 +9,6 @@ const ToDo = ({
   setAllCompleted, setAllUncompleted, setActiveFilter,
 }) => {
   const uncompletedItemsCount = filteredList.filter(item => !item.isDone).length;
-  const addInputValue = event => {
-    if (event.key === 'Enter' && event.target.value !== '') {
-      addToDo(event.target.value);
-      event.target.value = '';
-    }
-  };
 
   const completeToggle = () => {
     if (filteredList.every(item => item.isDone)) {
@@ -29,11 +23,11 @@ const ToDo = ({
       <p className={style.jumbotron}>todos</p>
       <InputField
         completeToggle={completeToggle}
-        addInputValue={addInputValue}
+        addToDo={addToDo}
         setActiveFilter={setActiveFilter}
       />
       <div className={style.toDoList}>
-        <List ToDoArray={filteredList} removeToDo={removeToDo} makeDone={makeDone} />
+        <List filteredList={filteredList} removeToDo={removeToDo} makeDone={makeDone} />
         <Footer
           state={filterState}
           clearCompleted={clearCompleted}

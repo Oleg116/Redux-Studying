@@ -1,7 +1,7 @@
 const initialState = {
   toDo: [],
-  filtered: [],
-  activeFilter: 'All',
+  filteredList: [],
+  activeFilter: '',
 };
 
 function rootReducer(state = initialState, action) {
@@ -10,45 +10,49 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         toDo: [...state.toDo, action.payload],
-        filtered: [...state.filtered, action.payload],
+        filteredList: [...state.filteredList, action.payload],
       };
     case 'REMOVE_TODO':
       return {
         ...state,
-        toDo: state.toDo.filter((_, index) => index !== action.payload),
-        filtered: state.toDo.filter((_, index) => index !== action.payload),
+        toDo: state.toDo.filter((item) => item.ID !== action.payload),
+        filteredList: state.toDo.filter((item) => item.ID !== action.payload),
       };
     case 'CLEAR_COMPLETED':
       return {
         ...state,
         toDo: state.toDo.filter(item => !item.isDone),
-        filtered: state.filtered.filter(item => !item.isDone),
+        filteredList: state.filteredList.filter(item => !item.isDone),
       };
     case 'READY_TOGLE':
       return {
         ...state,
-        toDo: state.toDo.map((element, index) => {
-          if (index === action.payload) {
+        toDo: state.toDo.map(element => {
+          if (element.ID === action.payload) {
             return {
               name: element.name,
               isDone: !element.isDone,
+              ID: element.ID,
             };
           }
           return {
             name: element.name,
             isDone: element.isDone,
+            ID: element.ID,
           };
         }),
-        filtered: state.toDo.map((element, index) => {
-          if (index === action.payload) {
+        filteredList: state.toDo.map(element => {
+          if (element.ID === action.payload) {
             return {
               name: element.name,
               isDone: !element.isDone,
+              ID: element.ID,
             };
           }
           return {
             name: element.name,
             isDone: element.isDone,
+            ID: element.ID,
           };
         }),
       };
@@ -58,10 +62,12 @@ function rootReducer(state = initialState, action) {
         toDo: state.toDo.map(item => ({
           name: item.name,
           isDone: true,
+          ID: item.ID,
         })),
-        filtered: state.toDo.map(item => ({
+        filteredList: state.toDo.map(item => ({
           name: item.name,
           isDone: true,
+          ID: item.ID,
         })),
         activeFilter: 'All',
       };
@@ -71,10 +77,12 @@ function rootReducer(state = initialState, action) {
         toDo: state.toDo.map(item => ({
           name: item.name,
           isDone: false,
+          ID: item.ID,
         })),
-        filtered: state.toDo.map(item => ({
+        filteredList: state.toDo.map(item => ({
           name: item.name,
           isDone: false,
+          ID: item.ID,
         })),
         activeFilter: 'All',
       };
@@ -83,20 +91,20 @@ function rootReducer(state = initialState, action) {
       if (action.payload === 'All') {
         return {
           ...state,
-          filtered: state.toDo,
+          filteredList: state.toDo,
           activeFilter: action.payload,
         };
       } if (action.payload === 'Active') {
         return {
           ...state,
-          filtered: state.toDo.filter(item => !item.isDone),
+          filteredList: state.toDo.filter(item => !item.isDone),
           activeFilter: action.payload,
         };
       }
       return {
         ...state,
         activeFilter: action.payload,
-        filtered: state.toDo.filter(item => item.isDone),
+        filteredList: state.toDo.filter(item => item.isDone),
       };
     default: {
       return state;

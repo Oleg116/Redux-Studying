@@ -4,6 +4,10 @@
 font-size: 15px;
 }
 
+.crossed {
+  text-decoration: line-through;
+}
+
 .defaultButton {
     height: 40px;
     border: none;
@@ -121,7 +125,6 @@ span {
   position: relative;
   left: 10px;
   font-size: 20px;
-  padding-left: 5px;
   width: 441px;
 }
 
@@ -141,7 +144,6 @@ span {
   right: 0px;
   background-color: rgba(184,49,49, 0);
   font-size: 25px;
-  padding: 0px;
 }
 
 .filterBox {
