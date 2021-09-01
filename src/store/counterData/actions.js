@@ -10,9 +10,9 @@ export const increment = (counter) => ({
   payload: counter + 1,
 });
 
-export const addToDo = (toDo, ID) => ({
+export const addToDo = (toDo) => ({
   type: actionType.ADD_TODO,
-  payload: { name: toDo, isDone: false, ID: ID },
+  payload: { name: toDo, isDone: false, ID: Math.round(Math.random() * 100000) },
 });
 
 export const removeToDo = (toDo) => ({

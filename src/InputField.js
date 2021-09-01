@@ -11,9 +11,8 @@ export default function InputField(methods) {
   };
 
   const addItemToTheTodo = event => {
-    const itemID = Math.round(Math.random() * 100000);
     if (event.key === 'Enter' && event.target.value !== '') {
-      addToDo(event.target.value, itemID);
+      addToDo(event.target.value);
       setActiveFilter('All');
       event.target.value = '';
     }
