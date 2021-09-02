@@ -17,21 +17,12 @@ font-size: 15px;
     margin: 5px;
 }
 
-// button {
-//     height: 40px;
-//     border: none;
-//     background-color: $base-color;
-//     outline: none;
-//     padding: 10px;
-//     margin: 5px;
-// }
-
 .clearButton {
   padding-top: 7px;
 }
 .active {
   padding: 9px;
-  border: 1px solid #ecd8d7;
+  border: 1px solid $active-button-border-color;
   margin: 5px;
   border-radius: 7px;
 }
@@ -40,7 +31,7 @@ font-size: 15px;
   font-size: 100px;
   text-align: center;
   margin: 0px;
-  color: #ead3d5;
+  color: $active-button-border-color;
 }
 .inputField {
   border: 1px solid black;
@@ -101,7 +92,7 @@ input[type="checkbox"]:before {
   left: -5px;
   height: 20px;
   top: -8px;
-  border: 1px solid black;
+  border: 1px solid #000;
   content: "";
   background: $base-color;
 }
@@ -114,7 +105,7 @@ input[type="checkbox"]:checked::before {
   background-position: bottom;
   transform: rotate(270deg);
   background-size: 70%;
-  border: #79da19 1px solid;
+  border: $checkbox-border 1px solid;
 }
 
 .buttonBox {
@@ -135,15 +126,19 @@ span {
 }
 
 .deleteSpec {
+  transition: 0.2s;
   height: 20px;
   display: inline-block;
   padding: 0px;
   margin: 0px;
-  color: #ff0000;
+  color: $base-color;
   position: relative;
   right: 0px;
   background-color: rgba(184,49,49, 0);
   font-size: 25px;
+  &:hover {
+    color: #ff0000;
+  }
 }
 
 .filterBox {
