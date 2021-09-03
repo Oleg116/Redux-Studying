@@ -9,8 +9,10 @@ function rootReducer(state = initialState, action) {
     case 'ADD_TODO':
       return {
         ...state,
-        toDo: [...state.toDo, action.payload],
-        filteredList: [...state.filteredList, action.payload],
+        toDo: [...state.toDo,
+        { name: action.payload, isDone: false, ID: Math.round(Math.random() * 100000) }],
+        filteredList: [...state.filteredList,
+        { name: action.payload, isDone: false, ID: Math.round(Math.random() * 100000) }],
       };
     case 'REMOVE_TODO':
       return {
