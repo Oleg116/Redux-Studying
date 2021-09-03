@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  addToDo, removeToDo, clearCompleted,
+  addToDo, removeToDo, clearCompleted, editItem,
   makeDone, setAllCompleted, setAllUncompleted, setActiveFilter,
 } from './store/counterData/actions';
 import ToDo from './ToDo';
 
 const App = ({
   filteredList, filterState, addToDo, removeToDo, clearCompleted, makeDone,
-  setAllCompleted, setAllUncompleted, setActiveFilter,
+  setAllCompleted, setAllUncompleted, setActiveFilter, editItem,
 }) => (
   <div>
     <ToDo
@@ -22,6 +22,7 @@ const App = ({
       makeDone={makeDone}
       setAllCompleted={setAllCompleted}
       setAllUncompleted={setAllUncompleted}
+      editItem={editItem}
     />
   </div>
 );
@@ -40,6 +41,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
     makeDone,
     setAllCompleted,
     setAllUncompleted,
+    editItem,
   },
   dispatch,
 );

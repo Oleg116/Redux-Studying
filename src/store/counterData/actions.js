@@ -31,3 +31,9 @@ export const setActiveFilter = (activeFilter = 'All') => ({
   type: actionType.SET_ACTIVE_FILTER,
   payload: activeFilter,
 });
+
+export const editItem = (item, ID) => ({
+  type: actionType.EDIT_ITEM,
+  payload: item,
+  ID: ID,
+});

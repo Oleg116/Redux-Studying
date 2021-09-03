@@ -108,6 +108,38 @@ function rootReducer(state = initialState, action) {
         activeFilter: action.payload,
         filteredList: state.toDo.filter(item => item.isDone),
       };
+    case 'EDIT_ITEM':
+      return {
+        ...state,
+        toDo: state.toDo.map(item => {
+          if (item.ID === action.ID) {
+            return {
+              name: action.payload,
+              isDone: item.isDone,
+              ID: item.ID,
+            };
+          }
+          return {
+            name: item.payload,
+            isDone: item.isDone,
+            ID: item.ID,
+          };
+        }),
+        filteredList: state.filteredList.map(item => {
+          if (item.ID === action.ID) {
+            return {
+              name: action.payload,
+              isDone: item.isDone,
+              ID: item.ID,
+            }
+          }
+          return {
+            name: item.payload,
+            isDone: item.isDone,
+            ID: item.ID,
+          };
+        }),
+      }
     default: {
       return state;
     }

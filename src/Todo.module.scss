@@ -141,6 +141,16 @@ span {
   }
 }
 
+.defaultItem {
+  border: 0px;
+  outline: none;
+  display: inline-block;
+  position: relative;
+  left: 10px;
+  font-size: 20px;
+  width: 441px;
+}
+
 .filterBox {
   display: flex;
   margin-right: 50px;
