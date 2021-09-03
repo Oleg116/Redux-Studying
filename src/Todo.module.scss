@@ -1,0 +1,161 @@
+@import './variables.scss';
+
+* {
+font-size: 15px;
+}
+
+.crossed {
+  text-decoration: line-through;
+}
+
+.defaultButton {
+    height: 40px;
+    border: none;
+    background-color: $base-color;
+    outline: none;
+    padding: 10px;
+    margin: 5px;
+}
+
+.clearButton {
+  padding-top: 7px;
+}
+.active {
+  padding: 9px;
+  border: 1px solid $active-button-border-color;
+  margin: 5px;
+  border-radius: 7px;
+}
+
+.jumbotron{
+  font-size: 100px;
+  text-align: center;
+  margin: 0px;
+  color: $active-button-border-color;
+}
+.inputField {
+  border: 1px solid black;
+  display: flex;
+  box-shadow: $shadow;
+}
+
+.toDoList {
+  background-color: $base-color;
+  box-shadow: $shadow;
+}
+
+.todoApp {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+}
+
+.input, button {
+  height: 40px;
+  border: none;
+  background-color: $base-color;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.input {
+  width: calc(100% - 40px);
+  font-style: oblique;
+  font-size: 20px;
+  &::placeholder{
+    color: rgba(0,0,0, 0.5);
+  }
+}
+
+.setAll {
+  width: 40px;
+  padding-top: 10px;
+  font-size: 18px;
+}
+
+input[type="checkbox"] {
+  margin: 0px 10px 0px 7px;
+  width: 10px;
+  height: 10px;
+}
+
+input[type="checkbox"]:before {
+  position: relative;
+  display: block;
+  border-radius: 20px;
+  width: 20px;
+  left: -5px;
+  height: 20px;
+  top: -8px;
+  border: 1px solid #000;
+  content: "";
+  background: $base-color;
+}
+
+input[type="checkbox"]:checked::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path d='M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z' fill='$fg-color'/></svg>");
+  border-radius: 200px;
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  transform: rotate(270deg);
+  background-size: 70%;
+  border: $checkbox-border 1px solid;
+}
+
+.buttonBox {
+  display: flex;
+}
+span {
+  display: inline-block;
+  position: relative;
+  left: 10px;
+  font-size: 20px;
+  width: 441px;
+}
+
+.todoItem {
+  border-bottom: 1px solid #000;
+  margin: 0px;
+  padding: 5px 0px 5px 5px;
+}
+
+.deleteSpec {
+  transition: 0.2s;
+  height: 20px;
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+  color: $base-color;
+  position: relative;
+  right: 0px;
+  background-color: rgba(184,49,49, 0);
+  font-size: 25px;
+  &:hover {
+    color: #ff0000;
+  }
+}
+
+.filterBox {
+  display: flex;
+  margin-right: 50px;
+}
+
+.left {
+  display: inline-block;
+  position: relative;
+  left: 10px;
+  font-size: 20px;
+  padding: 5px 5px 5px 5px;
+  width: 241px;
+  margin: 10px 10px 0px 0px;
+}
+
+.buttonsContainer {
+  display: flex;
+}

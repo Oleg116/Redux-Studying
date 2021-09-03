@@ -1,11 +1,47 @@
 import React from 'react';
-import style from './App.module.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {
+  addToDo, removeToDo, clearCompleted,
+  makeDone, setAllCompleted, setAllUncompleted, setActiveFilter,
+} from './store/counterData/actions';
+import ToDo from './ToDo';
 
-const App = () => {
-  const mth = 'Hello  my World';
-  return (
-    <h3 className={style.smth}>{mth}</h3>
-  );
-};
+const App = ({
+  filteredList, filterState, addToDo, removeToDo, clearCompleted, makeDone,
+  setAllCompleted, setAllUncompleted, setActiveFilter,
+}) => (
+  <div>
+    <ToDo
+      filteredList={filteredList}
+      setActiveFilter={setActiveFilter}
+      filterState={filterState}
+      addToDo={addToDo}
+      removeToDo={removeToDo}
+      clearCompleted={clearCompleted}
+      makeDone={makeDone}
+      setAllCompleted={setAllCompleted}
+      setAllUncompleted={setAllUncompleted}
+    />
+  </div>
+);
 
-export default App;
+const mapStateToProps = (state) => ({
+  filteredList: state.rootReducer.filteredList,
+  filterState: state.rootReducer.activeFilter,
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators(
+  {
+    setActiveFilter,
+    addToDo,
+    removeToDo,
+    clearCompleted,
+    makeDone,
+    setAllCompleted,
+    setAllUncompleted,
+  },
+  dispatch,
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

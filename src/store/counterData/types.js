@@ -1,0 +1,8 @@
+export const ADD_TODO = 'ADD_TODO';
+export const REMOVE_TODO = 'REMOVE_TODO';
+export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
+export const READY_TOGLE = 'READY_TOGLE';
+export const SET_ALL_COMPLETED = 'SET_ALL_COMPLETED';
+export const SET_ALL_UNCOMPLETED = 'SET_ALL_UNCOMPLETED';
+export const FILTER_LIST = 'FILTER_LIST';
+export const SET_ACTIVE_FILTER = 'SET_ACTIVE_FILTER';
