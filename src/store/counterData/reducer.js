@@ -10,9 +10,9 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         toDo: [...state.toDo,
-        { name: action.payload, isDone: false, ID: Math.round(Math.random() * 100000) }],
+        { name: action.payload, isDone: false, ID: action.ID }],
         filteredList: [...state.filteredList,
-        { name: action.payload, isDone: false, ID: Math.round(Math.random() * 100000) }],
+        { name: action.payload, isDone: false, ID: action.ID }],
       };
     case 'REMOVE_TODO':
       return {
@@ -111,35 +111,39 @@ function rootReducer(state = initialState, action) {
     case 'EDIT_ITEM':
       return {
         ...state,
-        toDo: state.toDo.map(item => {
-          if (item.ID === action.ID) {
-            return {
+        toDo: state.toDo.reduce((newToDoArr, toDoItem) => {
+          if (toDoItem.ID === action.ID) {
+            newToDoArr.push({
               name: action.payload,
-              isDone: item.isDone,
-              ID: item.ID,
-            };
+              isDone: toDoItem.isDone,
+              ID: toDoItem.ID,
+            });
+          } else {
+            newToDoArr.push({
+              name: toDoItem.name,
+              isDone: toDoItem.isDone,
+              ID: toDoItem.ID,
+            });
           }
-          return {
-            name: item.payload,
-            isDone: item.isDone,
-            ID: item.ID,
-          };
-        }),
-        filteredList: state.filteredList.map(item => {
-          if (item.ID === action.ID) {
-            return {
+          return newToDoArr;
+        }, []),
+        filteredList: state.filteredList.reduce((newToDoArr, toDoItem) => {
+          if (toDoItem.ID === action.ID) {
+            newToDoArr.push({
               name: action.payload,
-              isDone: item.isDone,
-              ID: item.ID,
-            }
+              isDone: toDoItem.isDone,
+              ID: toDoItem.ID,
+            });
+          } else {
+            newToDoArr.push({
+              name: toDoItem.name,
+              isDone: toDoItem.isDone,
+              ID: toDoItem.ID,
+            });
           }
-          return {
-            name: item.payload,
-            isDone: item.isDone,
-            ID: item.ID,
-          };
-        }),
-      }
+          return newToDoArr;
+        }, []),
+      };
     default: {
       return state;
     }

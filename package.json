@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --open --hot --mode=development",
-    "build": "webpack --mode=development"
+    "build": "webpack --mode=development",
+    "coverage": "yarn jest --coverage",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -36,6 +38,8 @@
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.0.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^7.30.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.23.4",
@@ -44,8 +48,10 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.1.1",
     "node-sass": "^6.0.1",
     "prettier": "2.3.2",
+    "react-test-renderer": "^17.0.2",
     "redux-toolkit": "1.1.2",
     "sass-loader": "^12.1.0",
     "scss-loader": "0.0.1",

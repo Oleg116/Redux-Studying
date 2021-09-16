@@ -3,6 +3,7 @@ import * as actionType from './types';
 export const addToDo = (toDo) => ({
   type: actionType.ADD_TODO,
   payload: toDo,
+  ID: Math.round(Math.random() * 100000),
 });
 
 export const removeToDo = (toDo) => ({
@@ -34,6 +35,6 @@ export const setActiveFilter = (activeFilter = 'All') => ({
 
 export const editItem = (item, ID) => ({
   type: actionType.EDIT_ITEM,
-  payload: item,
+  payload: item.target.value,
   ID: ID,
 });

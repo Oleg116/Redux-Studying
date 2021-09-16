@@ -6,22 +6,17 @@ import style from './Todo.module.scss';
 
 const cx = cnBind.bind(style);
 
-export default function List(props) {
-  const {
-    filteredList, removeToDo, makeDone, editItem,
-  } = props;
+export default function List({
+  filteredList, removeToDo, makeDone, editItem,
+}) {
   const itemEdit = event => {
     event.target.readOnly = false;
   };
-  const editor = (event, ID) => {
-    editItem(event.target.value, ID);
-  };
-
-  const lookForEnter = event => {
+  const handleKeyPress = event => {
     if (event.key === 'Enter') {
       event.target.readOnly = true;
     }
-  }
+  };
   return (
     <ul>
       {filteredList.map((element, index) => (
@@ -29,8 +24,8 @@ export default function List(props) {
           <input className={style.resultBox} checked={filteredList[index].isDone} type="checkbox" onChange={() => makeDone(element.ID)} value={index} />
           <input
             onDoubleClick={itemEdit}
-            onKeyPress={lookForEnter}
-            onChange={event => { editor(event, element.ID); }}
+            onKeyPress={handleKeyPress}
+            onChange={event => { editItem(event, element.ID); }}
             className={cx({ crossed: filteredList[index].isDone, defaultItem: true })}
             value={element.name}
             readOnly
