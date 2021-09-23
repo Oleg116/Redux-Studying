@@ -9,6 +9,13 @@
     "coverage": "yarn jest --coverage",
     "test": "jest"
   },
+  "jest": {
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss)$": "<rootDir>/styleMock.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Oleg116/Redux-Studying"
@@ -24,6 +31,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@reduxjs/toolkit": "^1.6.0",
+    "@types/enzyme-adapter-react-15": "^1.0.6",
     "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -36,6 +44,8 @@
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.14.5",
+    "@jest/globals": "^27.2.1",
+    "@testing-library/react": "^12.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.0.0",
     "enzyme": "^3.11.0",
