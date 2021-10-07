@@ -6,7 +6,7 @@ import style from './Todo.module.scss';
 
 const ToDo = ({
   filteredList, filterState, addToDo, removeToDo, clearCompleted, makeDone,
-  setAllCompleted, setAllUncompleted, setActiveFilter,
+  setAllCompleted, setAllUncompleted, setActiveFilter, editItem,
 }) => {
   const uncompletedItemsCount = filteredList.filter(item => !item.isDone).length;
 
@@ -27,7 +27,12 @@ const ToDo = ({
         setActiveFilter={setActiveFilter}
       />
       <div className={style.toDoList}>
-        <List filteredList={filteredList} removeToDo={removeToDo} makeDone={makeDone} />
+        <List
+          filteredList={filteredList}
+          removeToDo={removeToDo}
+          makeDone={makeDone}
+          editItem={editItem}
+        />
         <Footer
           state={filterState}
           clearCompleted={clearCompleted}

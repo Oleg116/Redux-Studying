@@ -10,9 +10,9 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         toDo: [...state.toDo,
-        { name: action.payload, isDone: false, ID: Math.round(Math.random() * 100000) }],
+        { name: action.payload, isDone: false, ID: action.ID }],
         filteredList: [...state.filteredList,
-        { name: action.payload, isDone: false, ID: Math.round(Math.random() * 100000) }],
+        { name: action.payload, isDone: false, ID: action.ID }],
       };
     case 'REMOVE_TODO':
       return {
@@ -107,6 +107,42 @@ function rootReducer(state = initialState, action) {
         ...state,
         activeFilter: action.payload,
         filteredList: state.toDo.filter(item => item.isDone),
+      };
+    case 'EDIT_ITEM':
+      return {
+        ...state,
+        toDo: state.toDo.reduce((newToDoArr, toDoItem) => {
+          if (toDoItem.ID === action.ID) {
+            newToDoArr.push({
+              name: action.payload,
+              isDone: toDoItem.isDone,
+              ID: toDoItem.ID,
+            });
+          } else {
+            newToDoArr.push({
+              name: toDoItem.name,
+              isDone: toDoItem.isDone,
+              ID: toDoItem.ID,
+            });
+          }
+          return newToDoArr;
+        }, []),
+        filteredList: state.filteredList.reduce((newToDoArr, toDoItem) => {
+          if (toDoItem.ID === action.ID) {
+            newToDoArr.push({
+              name: action.payload,
+              isDone: toDoItem.isDone,
+              ID: toDoItem.ID,
+            });
+          } else {
+            newToDoArr.push({
+              name: toDoItem.name,
+              isDone: toDoItem.isDone,
+              ID: toDoItem.ID,
+            });
+          }
+          return newToDoArr;
+        }, []),
       };
     default: {
       return state;
